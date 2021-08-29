@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your_Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color: rgb(248, 248, 248)
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        #main{
+            width: 70%;
+            margin: 4% auto;
+            /* background-color: tomato; */
+            padding: 2%;
+            background-color: #fff;
+            box-shadow: 0px 2px 2px 0px rgb(0 0 0 / 20%);
+        }
+        #content {
+            display: grid;
+            grid-template-columns: 65% 35%;
+            
+            background-color: #fff
+        }
+        h5 {
+            width: 100%;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 32px;
+            color: #3c4858;
+        }
+        #cart {
+              
+            padding: 0% 5% 5% 0%;
+
+        }
+        #checkout-box{
+            border-left: 1px solid black;
+            
+        }
+        #checkout {
+            background-color: white;
+            padding: 0% 5% 5% 10%;
+            height: fit-content;
+        }
+        .bottom_border{
+            border-bottom: 1px solid #3c4858;
+        }
+        button{
+            height: 30px;
+            border: none;
+            background-color: rgb(224, 5, 5);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            border-radius: 4px;
+            /* float: right; */
+            box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 3px 1px -2px rgb(0 0 0 / 12%);
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 23px;
+            padding: 4px 8px;
+            min-width: 50px;
+            font-size: 0.8125rem;
+            /* margin: 10px 5px 10px 0px; */
+        }
+        p {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 21px;
+            color: #3c4858;
+            
+        }
+        .top_p {
+            padding-top: 8px;
+        }
+        h3 {
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 21px;
+            color: rgba(0, 0, 0, 0.87);
+        }
+        input {
+            height: 20px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: rgba(0, 0, 0, 0.87);
+            cursor: text;
+            border: none;
+            border-bottom: 1px solid black;
+            padding : 6px 0px 7px;;
+        }
+        .go {
+            margin: 0, 0, 0, 0;
+            box-sizing: border-box;
+        }
+        .checkout_button{
+            width: 100%;
+            margin: 15px 5px 15px 5px;
+        }
+        #cart > div {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed grey;
+            display: grid;
+            grid-template-columns: 40% 20% 20%;
+            gap: 15%;
+        }
+        #cart > div > p {
+            font-weight: 800;
+            font-size: 15px;
+        }
+        .bottom_border {
+            display: grid;
+            grid-template-columns: 30% 40%;
+            gap: 50%;
+        }
+        #total {
+            display: grid;
+            grid-template-columns: 30% 40%;
+            gap: 50%;
+        }
+        #total > p {
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+
+
+
+
+    * {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 400;
+        }
+        #main_base {
+            width: 100%;
+            height: 20%;
+            background-color: #446478;
+        }
+        #content_base {
+            padding: 1% 8%;
+        }
+        #upper_part {
+            display: grid;
+            grid-template-columns: 10% 25% 25% 25%;
+            gap: 3%;
+            margin: auto;
+        }
+        #detail {
+            display: grid;
+            grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10%;
+            gap: 2%;
+            border-bottom: 1px solid rgb(204, 200, 200);
+        }
+        #year {
+            text-align: center;
+        }
+        h4 {
+            border-bottom: 1px solid rgb(207, 202, 202);
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 14px;
+        }
+        img {
+            width: 30%;
+            margin: 5px;
+        }
+        #image {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+        } 
+        #upper_part > div > p {
+            color: white;
+        }
+        #lower_part > div > h3 {
+            color: white;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h5>Cart</h5>
+        <div id="content">
+            <div id="cart"></div>
+            <div id= "checkout-box">
+                <div id="checkout">
+                    <div id="amount" class="bottom_border">
+                        <p class="top_p">Amount</p>
+                        <p id="amountvalue"></p>
+                    </div>
+                    
+                    <div id="cgst" class="bottom_border">
+                        <p class="top_p">CGST 9%</p>
+                        <p id="cgstvalue"></p>
+                    </div>
+                    
+                    <div id="sgst" class="bottom_border">
+                        <p class="top_p">SGST 9%</p>
+                        <p id="sgstvalue"></p>
+                    </div>
+                    
+                    <div id="total">
+                        <h3>Total:</h3>
+                        
+                    </div>
+                    <div id="coupon">
+                        <input type="text" placeholder="Coupon Code"/>
+                        <button type="submit" class="go">Go</button>
+                    </div>
+                    <div id="checkout_btn">
+                        <button class="checkout_button"onclick="location.href='pay1.html'">CHECKOUT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+  <div id="main_base">
+    <div id="content_base">
+         <div id="upper_part">
+             <div id="image">
+                 <img src="https://image.flaticon.com/icons/png/512/145/145802.png
+                 "/>
+                 <img src="https://image.flaticon.com/icons/png/512/1419/1419518.png"/>
+                 <img src="https://image.flaticon.com/icons/png/512/124/124021.png"/>
+                 <img src="https://img-premium.flaticon.com/png/512/1377/premium/1377231.png?token=exp=1630134186~hmac=ba6142ed255cc44bb2381ece8bf4d785"/>
+             </div>
+             <div id="place">
+                 <h4>BY PLACE</h4>
+                 <p>Internships In Mumbai</p>
+                 <p>Internships In Delhi</p>
+                 <p>Internships In Bangalore</p>
+                 <p>Internships In Pune</p>
+                 <p>Internships In Hyderabad</p>
+             </div>
+             <div id="profile">
+                     <h4>BY PROFILE</h4>
+                     <p>Marketing Internships</p>
+                     <p>Business Development Internships</p>
+                     <p>Content Writing Internships</p>
+                     <p>Graphic Designing Internships</p>
+                     <p>HR Internships</p>
+                     <p>Engineering Internships</p>
+             </div>
+             <div id="type">
+                 <h4>BY TYPE</h4>
+                 <p>Full Time Internships</p>
+                 <p>Part Time Internships</p>
+                 <p>Work From Home Internships</p>
+             </div>
+         </div>
+         <div id="lower_part">
+             <div id="detail">
+                 <h3>FIND INTERNSHIP</h3>
+                 <h3>POST INTERNSHIP</h3>
+                 <h3>COURSES</h3>
+                 <h3>TERMS AND CONDITIONS</h3>
+                 <h3>PRIVACY POLICY</h3>
+                 <h3>CONTACT US</h3>
+                 <h3>ABOUT US</h3>
+                 <h3>SITEMAP</h3>
+             </div>
+             <div id="year">
+                 <h3>© 2015 - 2021 INTERNTHEORY. ALL RIGHTS RESERVED.</h3>
+             </div>
+         </div>
+   </div>
+</div> 
+
+
+
+
+
+
+
+
+    <script>
+    let cart_data= JSON.parse(localStorage.getItem("course_cart"))
+     console.log(cart_data)
+      var total=0;
+      cart_data.forEach(function(course){
+          
+        let div= document.createElement("div")
+       let course_name=document.createElement("p")
+      course_name.innerText=course.name;
+      let course_price=document.createElement("p");
+      course_price.innerText=course.price;
+       let image = document.createElement("img");
+       image.src=course.image;
+       image.style.width="150px";
+       div.append(image ,course_name,course_price);
+
+
+
+      document.getElementById("cart").append(div);
+      
+      total= total+ Number(course.price);
+      
+    
+      });
+      document.getElementById("amountvalue").append(total)
+      
+
+      var  cgst =Math.ceil((total*0.09));
+        document.getElementById("cgstvalue").innerHTML=cgst;
+        var sgst=Math.ceil(total*0.09);
+         document.getElementById("sgstvalue").innerHTML=sgst;
+         var final = Math.ceil(total+(cgst+sgst));
+
+         var finalvalue=document.createElement("p")
+          console.log(finalvalue)
+
+         finalvalue.innerHTML=final;
+         document.getElementById("total").append(finalvalue)
+   
+        var final_object = localStorage.setItem("final_cost", JSON.stringify(final));
+
+    </script>
+
+</body>
+</html>   
