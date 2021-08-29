@@ -217,15 +217,15 @@
             <h3>OR</h3>
 
             <form>
-                <input id="input1" placeholder="First Name" type="text"/>
+                <input id="input1" placeholder="First Name*" type="text"/>
 
-                <input id="input2" placeholder="Last Name" type="text"/>
+                <input id="input2" placeholder="Last Name*" type="text"/>
 
                 <input id="input3" placeholder="Company Name*" type="text"/>
 
                 <input id="input4" placeholder="Mobile Number*" type="number"/>
                 
-                <input id="input5" placeholder="Corporate Email" type="email"/>
+                <input id="input5" placeholder="Corporate Email*" type="email"/>
                 
                 <input id="input6" placeholder="Enter Password*" type="password"/>
 
@@ -233,9 +233,85 @@
 
             </form>
             
-            <button id= 'signup-btn' type="submit">Proceed to posting internship</button>
+            <button id= 'signup-btn' type="submit" onclick="validate()">Proceed to posting internship</button>
 
         </div>
     </div>
 </body>
+
+<script>
+    if (localStorage.getItem('regCompaniesInternTheory') == null){
+        localStorage.setItem('regCompaniesInternTheory', '[]');
+    }
+    
+    
+    var companyData = JSON.parse(localStorage.getItem('regCompaniesInternTheory'));
+    console.log('companyData:', companyData);
+
+    
+
+    function validate(){
+        var fName = document.getElementById('input1').value;
+        var lName = document.getElementById('input2').value;
+        var companyName = document.getElementById('input3').value;
+        var mobileNo = document.getElementById('input4').value;
+        var email = document.getElementById('input5').value;
+        var password = document.getElementById('input6').value;
+        
+
+        // console.log('fName:', fName);
+        // console.log('lName:', lName);
+        // console.log('email:', email);
+        // console.log('password:', password);
+        // console.log('mobileNo:', mobileNo);
+
+        var obj = {};
+        
+
+        if(fName == ''){
+            alert("First Name cannot be empty");
+        }else{
+            obj.firstName = fName;
+        }
+
+        if(lName == ''){
+            alert("Last Name cannot be empty");
+        }else{
+            obj.lastName = lName;
+        }
+
+        if(companyName == ''){
+            alert("Company Name cannot be empty");
+        }else{
+            obj.company_Name = companyName;
+        }
+
+        if(mobileNo == '' || mobileNo.length < 10){
+            alert("Enter a valid Mobile Number");
+        }else{
+            obj.mobile = mobileNo;
+        }
+
+        if(email == ''){
+            alert("Please enter a valid email");
+        }else{
+            obj.emailID = email;
+        }
+
+        if(password == '' || password.length < 6){
+            alert("Password should be of atleast 6 characters");
+        }else{
+            obj.pass = password;
+        }
+        
+        console.log('obj:', obj);
+        
+        if (Object.values(obj).length == 6){
+            companyData.push(obj);
+            localStorage.regCompaniesInternTheory = JSON.stringify(companyData);
+            alert('SignUp Successful');
+            window.location.href = 'login_company.html';
+        }
+    }
+</script>
 </html>

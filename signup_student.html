@@ -209,14 +209,74 @@
                 <input id="input5" placeholder="Mobile Number*" type="number"/>
             </form>
             
-            <button id= 'signup-btn' type="submit">Sign Up</button>
+            <button id= 'signup-btn' type="submit" onclick="validate()">Sign Up</button>
         </div>
     </div>
 </body>
 <script>
-    var userData = localStorage.setItem('regUsers', '[]');
-    console.log(userData);
 
+    if (localStorage.getItem('regUsersInternTheory') == null){
+        localStorage.setItem('regUsersInternTheory', '[]');
+    }
+    
+    
+    var userData = JSON.parse(localStorage.getItem('regUsersInternTheory'));
+    console.log('userData:', userData);
 
+    
+
+    function validate(){
+        var fName = document.getElementById('input1').value;
+        var lName = document.getElementById('input2').value;
+        var email = document.getElementById('input3').value;
+        var password = document.getElementById('input4').value;
+        var mobileNo = document.getElementById('input5').value;
+
+        // console.log('fName:', fName);
+        // console.log('lName:', lName);
+        // console.log('email:', email);
+        // console.log('password:', password);
+        // console.log('mobileNo:', mobileNo);
+
+        var obj = {};
+        if(email == ''){
+            alert("Please enter a valid email");
+        }else{
+            obj.emailID = email;
+        }
+
+        if(fName == ''){
+            alert("First Name cannot be empty");
+        }else{
+            obj.firstName = fName;
+        }
+
+        if(lName == ''){
+            alert("Last Name cannot be empty");
+        }else{
+            obj.lastName = lName;
+        }
+
+        if(password == '' || password.length < 6){
+            alert("Password should be of atleast 6 characters");
+        }else{
+            obj.pass = password;
+        }
+
+        if(mobileNo == '' || mobileNo.length < 10){
+            alert("Enter a valid Mobile Number");
+        }else{
+            obj.mobile = mobileNo;
+        }
+        
+        console.log('obj:', obj);
+        
+        if (Object.values(obj).length == 5){
+            userData.push(obj);
+            localStorage.regUsersInternTheory = JSON.stringify(userData);
+            alert('SignUp Successful');
+            window.location.href = 'login_student.html';
+        }
+    }
 </script>
 </html>

@@ -194,7 +194,7 @@
 
             <form>
 
-                <input id="input1" placeholder="Email/Number" type="email/number"/>
+                <input id="input1" placeholder="Email" type="email"/>
                 
                 <input id="input2" placeholder="Password" type="password"/>
 
@@ -202,8 +202,34 @@
 
             <h4>Don't have an account? <a href="signup_student.html">Create your account</a></h4>
 
-            <button id= 'login-btn' type="submit">Login</button>
+            <button id= 'login-btn' type="submit" onclick="login()">Login</button>
         </div>
     </div>
 </body>
+
+<script>
+    var users = JSON.parse(localStorage.getItem("regUsersInternTheory"));
+    console.log('users:', users);
+
+    function login() {
+        var mailEntered = document.getElementById('input1').value;
+        // console.log('mail:', mail);
+
+        var passwordEntered = document.getElementById('input2').value;
+        // console.log('password:', password);
+
+        users.forEach(function(obj){
+            // console.log(obj.emailID, obj.pass);
+
+            if (mailEntered == obj.emailID && passwordEntered == obj.pass ){
+                alert("Sign In Successful");
+            }else{
+                alert("Invalid Email or Password");
+                window.location.href = "";
+            }
+        })
+
+        
+    }
+</script>
 </html>
