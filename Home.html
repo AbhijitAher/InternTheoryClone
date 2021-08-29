@@ -119,16 +119,17 @@
         }
      #preference{
          height: 80px;
-         width: 850px;
+         width: 1300px;
          background-color: white;
          margin:auto;
-         border-radius: 20px;
+         border-radius: 10px;
          margin-top: 5px;         
          margin-bottom: 5px;         
      }
 
      #right{
          float: left;
+         
      }
         #part1{
             float: left;
@@ -141,6 +142,14 @@
         }
         #srh{
             float: left;
+            padding: 8px 0px 8px 0px;
+            /* margin-left: 0px; !important  */
+            /* background-color: white; */
+
+        }
+        #srhbtn{
+            margin-left: 0px;
+            /* background-color: white; */
         }
     
 
@@ -239,13 +248,14 @@
         #coursebox1 {
 
             float: left;
-            margin-left: 150px;
+            margin-left: 250px;
             background: url(https://assets.interntheory.com/creative/home-courses/Homepage-stock.jpg) center center / cover;
 
         }
 
         #coursebox2 {
             float: left;
+
             background: url(https://assets.interntheory.com/creative/home-courses/Homepage-digital.jpg)center center / cover;
         }
 
@@ -256,7 +266,7 @@
 
 
         .text1 {
-            width: 48%;
+            width: 50%;
             height: 300px;
             padding-top: 200px;
             padding-right: 150px;
@@ -496,9 +506,9 @@
                     <h2>Let's Get You <b style="background-color: red;padding:5px; text-align: center;">Ready</b></h2>
                     <p style="text-align: center;">The One Stop Upgrade Your Resume.Expand Your Skillset.Do An
                         Internship.Get Placed.</p>
-                  <div id ="preference">
-                    <div id="part1">
-                        <select style="padding: 8px;" class="cities">
+                  <div id ="preference" style="margin-top: 50px">
+                    <div id="part1" style="margin-left: 30px">
+                        <select style="width: 250px; padding:8px; margin-right: 20px; font-size: 18px; border: none; border-bottom: 1px solid black;" class="cities">
                             <option>Cities..</option>
                             <option value="Abhayapuri">Abhayapuri</option>
                             <option value="Ahemdabad">Ahemdabad</option>
@@ -513,14 +523,14 @@
                             <option value="Gaya">Gaya</option>
                         </select>
 
-                        <select style="padding: 8px;" class="type">
+                        <select style="width: 250px; padding: 8px; margin-right: 20px; font-size: 18px; border: none; border-bottom: 1px solid black;" class="type">
                             <option>Types..</option>
                             <option value="fulltime">Full time</option>
                             <option value="parttime">Part time</option>
                             <option value="workfromhome">Work from Home</option>
                         </select>
 
-                        <select style="padding: 8px;" class="coursepref">
+                        <select style="width: 250px; padding: 8px; font-size: 18px; border: none; border-bottom: 1px solid black;" class="coursepref">
                             <option>Preference..</option>
                             <option value="advertising">Advertising</option>
                             <option value="animation">Animation</option>
@@ -537,10 +547,10 @@
                     </div>
                     <div id="right">
                         <div id="part2">
-                            <input style="padding: 8px;" type="search" placeholder="search"/>
+                            <input style="width: 250px; padding: 8px 0px 8px 8px; font-size: 18px; border: none; border-bottom: 1px solid black;" type="search" placeholder="Search"/>
                         </div>
                         <div id="srh">
-                            <button>SEARCH</button>
+                            <button id="srhbtn">SEARCH</button>
                         </div>
                     </div>
                     </div>
@@ -767,6 +777,11 @@
         
 
         <script>
+
+            document.getElementById("img1").addEventListener("click" ,function(){
+            location.href="internship.html"
+            })
+
             
             document.getElementById("img3").addEventListener("click" ,function(){
                 location.href="cart.html"

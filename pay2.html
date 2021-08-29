@@ -117,9 +117,9 @@
                 </div>
                 <div id="card_data">
                     <input type="number" id = "cardNumber" placeholder="Card Number"/>
-                    <input type="tel" id = "exp" placeholder="MM/YY"/>
+                    <input type="text" id = "exp" placeholder="MM/YY"/>
                     <input type="text"  id = "cardName" placeholder="Card Holder's name"/>
-                    <input type="password" id = "cvv" placeholder="CVV"/>
+                    <input type="password" maxlength="3" id = "cvv" placeholder="CVV"/>
                 </div>
             </div>
             <div id="remember">
@@ -127,7 +127,7 @@
                 <label>Remember Card</label>
             </div>
             <div id="pay_part">
-                <p id="payment">PAY</p>
+                <p id="payment" onclick="validate()">PAY</p>
                 <p></p>
             </div>
         </div>
@@ -149,8 +149,8 @@
         var obj = {};
         
 
-        if(cName == ''){
-            alert("Card Number cannot be empty");
+        if(cName == '' || cName.length != 16){
+            alert("Card Number invalid!");
         }else{
             obj.c_no = cName;
         }
@@ -178,6 +178,7 @@
         if (Object.values(obj).length == 4){
             setTimeout(function(){
                 alert('Payment Successful, Thank You form Intern Theory!');
+                window.location.href = "Home.html";
             }, 5000);
         }
     }
