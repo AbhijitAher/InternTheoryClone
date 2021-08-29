@@ -116,10 +116,10 @@
                     <h5>Add New Card</h5>
                 </div>
                 <div id="card_data">
-                    <input type="number" placeholder="Card Number"/>
-                    <input type="tel" placeholder="MM/YY"/>
-                    <input type="text" placeholder="Card Holder's name"/>
-                    <input type="password" placeholder="CVV"/>
+                    <input type="number" id = "cardNumber" placeholder="Card Number"/>
+                    <input type="tel" id = "exp" placeholder="MM/YY"/>
+                    <input type="text"  id = "cardName" placeholder="Card Holder's name"/>
+                    <input type="password" id = "cvv" placeholder="CVV"/>
                 </div>
             </div>
             <div id="remember">
@@ -135,8 +135,51 @@
 </body>
 </html>
 <script>
+
     var pay_money = localStorage.getItem("final_cost");
    // console.log(pay_money);
     document.getElementById("money").innerHTML = "₹" + "  " + pay_money;
+
+    function validate(){
+        var cName = document.getElementById('cardNumber').value;
+        var expiry = document.getElementById('exp').value;
+        var card_name = document.getElementById('cardName').value;
+        var cvvNumber = document.getElementById('cvv').value;
+
+        var obj = {};
+        
+
+        if(cName == ''){
+            alert("Card Number cannot be empty");
+        }else{
+            obj.c_no = cName;
+        }
+
+        if(expiry == ''){
+            alert("Please enter all the fields");
+        }else{
+            obj.Expire= expiry;
+        }
+
+        if(card_name == ''){
+            alert("Please Enter Card Holders Name");
+        }else{
+            obj.name = card_name;
+        }
+
+        if(cvvNumber == '' || cvvNumber.length < 3){
+            alert("Enter a valid cvv Number");
+        }else{
+            obj.cvv = cvvNumber;
+        }
+        
+        console.log('obj:', obj);
+        
+        if (Object.values(obj).length == 4){
+            setTimeout(function(){
+                alert('Payment Successful, Thank You form Intern Theory!');
+            }, 5000);
+        }
+    }
         
 </script>
